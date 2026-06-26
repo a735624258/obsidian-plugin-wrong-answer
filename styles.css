@@ -1,0 +1,105 @@
+/* 错题卡片 - 两栏同步翻转版 */
+
+.wrong-card-wrapper {
+    margin: 1em 0;
+}
+
+/* 两栏容器 */
+.wrong-card-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ---- 左栏：图片翻转卡片 ---- */
+.wrong-card {
+    perspective: 1200px;
+    max-width: 320px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.wrong-card-inner {
+    display: grid;
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+    line-height: 0;
+}
+
+.wrong-card-row.flipped .wrong-card-inner {
+    transform: rotateY(180deg);
+}
+
+.wrong-card-front,
+.wrong-card-back {
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+    line-height: 0;
+}
+
+.wrong-card-back {
+    transform: rotateY(180deg);
+}
+
+.wrong-card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 提示文字 — 底部半透明条 */
+.wrong-card-hint {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+}
+
+/* ---- 右栏：同步翻转的侧边 ---- */
+.wrong-card-side {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 0;
+    font-size: 0.9em;
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+/* 侧边正面（未翻转前显示） */
+.wrong-card-side-front {
+    display: block;
+    color: var(--text-muted);
+    font-size: 1em;
+    font-weight: 500;
+    padding: 1em 0;
+}
+
+.wrong-card-row.flipped .wrong-card-side-front {
+    display: none;
+}
+
+/* 侧边背面（翻转后显示笔记） */
+.wrong-card-side-back {
+    display: none;
+    color: var(--text-normal);
+    white-space: pre-wrap;
+    font-size: 0.95em;
+    line-height: 1.7;
+}
+
+.wrong-card-row.flipped .wrong-card-side-back {
+    display: block;
+}

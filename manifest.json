@@ -1,0 +1,10 @@
+{
+  "id": "wrong-answer",
+  "name": "错题卡片",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "翻转卡片式错题本：正面贴题目截图，点击翻到背面显示答案和解析",
+  "author": "小D x 国豪",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}
